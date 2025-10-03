@@ -45,7 +45,7 @@ public function index()
     {
         // التحقق من البيانات المرسلة
         $validated = $request->validate([
-            'img.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'img.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
             'location' => 'required|string|max:255',
             'dec_' => 'required|string|max:255',
             'price' => 'required|numeric',
