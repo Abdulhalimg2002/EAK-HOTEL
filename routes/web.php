@@ -49,11 +49,14 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function() {
     // الإشعارات
     Route::get('/admin/notifications', [AdminNotificationController::class, 'index'])->name('admin.notifications.index');
 Route::post('/admin/notifications/{id}/mark-read', [AdminNotificationController::class, 'markRead'])->name('admin.notifications.markRead');
-    Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
-    Route::post('/category', [CategoryController::class, 'store'])->name('admin.category.store');
-    Route::get('/category/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
-    Route::put('/category/{category}', [CategoryController::class, 'update'])->name('category.update');
-    Route::delete('/category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+  Route::resource('category', CategoryController::class)->names([
+    'index' => 'admin.category.index',
+    'create' => 'admin.category.create',
+    'store' => 'admin.category.store',
+    'edit' => 'admin.category.edit',
+    'update' => 'admin.category.update',
+    'destroy' => 'admin.category.destroy',
+]);
 });
 
    
